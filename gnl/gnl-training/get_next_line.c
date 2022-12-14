@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <get_next_line.h>
+#include "get_next_line.h"
 
+/*
 int main(void)
 {
 	char	*line = NULL;
@@ -31,6 +32,7 @@ int main(void)
 	printf("\nexit");
 	return (0);
 }
+ */
 
 char	*get_next_line(int fd)
 {
@@ -43,7 +45,7 @@ char	*get_next_line(int fd)
 	if (delim)
 	{
 		line = ft_line(str, delim);
-		ft_next(str, delim, &str);
+		ft_next(delim, &str);
 		return (line);
 	}
 	line = ft_readfile(fd);
@@ -51,7 +53,7 @@ char	*get_next_line(int fd)
 	free(line);
 	delim = ft_strchr(tmp, '\n');
 	line = ft_line(tmp, delim);
-	ft_next(tmp, delim, &str);
+	ft_next(delim, &str);
 	free(tmp);
 	return (line);
 }
@@ -83,10 +85,10 @@ char	*ft_readfile(int fd)
 	return (line);
 }
 
-char	*ft_next(const char *str, const char *delim, char **buf)
+char	*ft_next(const char *delim, char **buf)
 {
 	char	*next;
-	size_t	li_len, i;
+	size_t	li_len;
 
 	if (!delim)
 	{
@@ -105,7 +107,7 @@ char	*ft_next(const char *str, const char *delim, char **buf)
 char	*ft_line(const char *str, const char *delim)
 {
 	char	*line;
-	size_t	li_len, i;
+	size_t	li_len;
 
 	li_len = ft_strlen(str) - ft_strlen(delim);
 	if (delim)

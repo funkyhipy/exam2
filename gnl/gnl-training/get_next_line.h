@@ -21,7 +21,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
+#  define BUFFER_SIZE 2048
 # endif // BUFFER_SIZE
 
 char	*get_next_line(int fd);
@@ -30,7 +30,7 @@ void	ft_free(char **ptr);
 void	ft_bzero(char *ptr, size_t size);
 char	*ft_readfile(int fd);
 char	*ft_line(const char *str, const char *delim);
-char	*ft_next(const char *str, const char *delim, char **buf);
+char	*ft_next(const char *delim, char **buf);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, const char c);
 char	*ft_strjoin(char const *s1, char const *s2);
